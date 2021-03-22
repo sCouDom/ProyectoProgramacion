@@ -10,7 +10,7 @@ public class GameState {
 
     private Player player;
     public GameState(){
-        player = new Player(new Vector2D(100,500), Assets.player);
+        player = new Player(new Vector2D(100,500), new Vector2D(), Assets.player);
     }
 
     public void update(){
