@@ -1,5 +1,6 @@
 package gameObjects;
 
+import input.Keyboard;
 import math.Vector2D;
 
 import java.awt.*;
@@ -13,7 +14,9 @@ public class Player extends GameObject {
 
     @Override
     public void update() {
-
+        if(Keyboard.RIGHT){
+            position.setX(position.getX()+1);
+        }
     }
 
     @Override
