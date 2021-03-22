@@ -1,6 +1,7 @@
 package main;
 
 import graphics.Assets;
+import input.Keyboard;
 import states.GameState;
 
 import javax.swing.*;
@@ -20,6 +21,8 @@ public class Window extends JFrame implements Runnable{
     private double delta = 0;
     private int AVERAGEFPS = FPS;
     private GameState gameState;
+    private Keyboard keyboard;
+
     public Window(){
         setTitle("Esquívalo como puedas");
         setSize(WIDTH, HEIGHT);
@@ -29,11 +32,13 @@ public class Window extends JFrame implements Runnable{
         setVisible(true);
 
         canvas=new Canvas();
+        keyboard=new Keyboard();
         canvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         canvas.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         canvas.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         canvas.setFocusable(true);
         add(canvas);
+        canvas.addKeyListener(keyboard);
     }
 
 
@@ -42,6 +47,7 @@ public class Window extends JFrame implements Runnable{
     }
 
     private void update(){
+        keyboard.update();
         gameState.update();
     }
 
