@@ -19,5 +19,6 @@ public class GameState {
 
     public void draw(Graphics g){
         player.draw(g);
+
     }
 }
