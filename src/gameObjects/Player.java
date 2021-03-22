@@ -11,9 +11,13 @@ import java.awt.image.BufferedImage;
 public class Player extends MovingObject {
 
     private Vector2D heading;
-    public Player(Vector2D position, Vector2D velocitiy, BufferedImage texture) {
-        super(position, velocitiy, texture);
+    private Vector2D acceleration;
+    private final double ACC = 0.2;
+
+    public Player(Vector2D position, Vector2D velocitiy, double maxVel, BufferedImage texture) {
+        super(position, velocitiy, maxVel, texture);
         heading = new Vector2D(0, 1);
+        acceleration = new Vector2D();
     }
 
     @Override
@@ -25,6 +29,15 @@ public class Player extends MovingObject {
             angle -= Math.PI/20;
         heading = heading.setDirection(angle - Math.PI/2);
 
+        position = position.add(velocity);
+
+        if(Keyboard.UP){
+            acceleration = heading.scale(ACC);
+        } else {
+
+        }
+        velocity = velocity.add(acceleration);
+        velocity.limit(maxVel);
     }
 
     @Override
