@@ -10,7 +10,7 @@ import java.awt.image.BufferStrategy;
 
 public class Window extends JFrame implements Runnable{
 
-    public static final int WIDTH = 800, HEIGHT =600;
+    public static final int WIDTH = 1000, HEIGHT =600;
     private Canvas canvas;
     private Thread thread;
     private boolean running=false;
@@ -29,7 +29,7 @@ public class Window extends JFrame implements Runnable{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
-        setVisible(true);
+
 
         canvas=new Canvas();
         keyboard=new Keyboard();
@@ -39,6 +39,7 @@ public class Window extends JFrame implements Runnable{
         canvas.setFocusable(true);
         add(canvas);
         canvas.addKeyListener(keyboard);
+        setVisible(true);
     }
 
 
