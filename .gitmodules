@@ -1,0 +1,3 @@
+[submodule "MathVectorLib"]
+	path = MathVectorLib
+	url = https://github.com/sCouDom/MathVectorLib.git
