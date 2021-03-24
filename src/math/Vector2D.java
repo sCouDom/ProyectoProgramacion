@@ -8,18 +8,25 @@ public class Vector2D {
         this.y=y;
     }
 
+    public Vector2D(){
+        x=0;
+        y=0;
+    }
+
     public Vector2D add(Vector2D v){
         return new Vector2D(x + v.getX(), y + v.getY());
     }
+
+    public Vector2D substract(Vector2D v){
+        return new Vector2D(x - v.getX(), y - v.getY());
+    }
+
 
     public Vector2D scale(double value){
         return new Vector2D(x*value,y*value);
     }
 
-    public Vector2D(){
-        x=0;
-        y=0;
-    }
+
 
     public void limit(double value){
         if(x>value){
@@ -59,4 +66,6 @@ public class Vector2D {
     public void setY(double y) {
         this.y = y;
     }
+
+
 }

@@ -21,6 +21,15 @@ public class Asteroide extends MovingObject {
     public void update() {
         position = position.add(velocity);
         angle += 0.01;
+
+        if(position.getX()>800)
+            position.setX(0);
+        if(position.getY()>500)
+            position.setY(0);
+        if(position.getX()<0)
+            position.setX(800);
+        if(position.getY()<0)
+            position.setY(500);
     }
 
     @Override

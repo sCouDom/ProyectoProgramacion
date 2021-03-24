@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameState {
 
@@ -22,15 +24,16 @@ public class GameState {
     public GameState(){
         player = new Player(new Vector2D(100,500), new Vector2D(), 4, Assets.player, this);
         movingObject.add(player);
-        numAsteroides = 4;
-        startWave(); //HACER QUE SIGAN APARECIENDO WAVES FOR + SLEEP
+        numAsteroides = 1;
+        startWave();
+
     }
 
-    private void startWave(){
+    public void startWave(){
         double x, y;
         for (int i = 0; i < numAsteroides; i++) {
-            x = i % 2 == 0 ? Math.random()*1000 : 0;
-            y = i % 2 != 0 ? Math.random()*800 : 0;
+            x = i % 2 == 0 ? Math.random()*1000+200 : 0;
+            y = i % 2 != 0 ? Math.random()*800+200 : 0;
 
             BufferedImage texture = Assets.asteroide;
 
