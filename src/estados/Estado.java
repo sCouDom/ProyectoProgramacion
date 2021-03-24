@@ -21,7 +21,7 @@ public class Estado {
     public Estado(){
         jugador = new Jugador(new Vector(100,500), new Vector(), 4, Assets.jugador, this);
         objetosMovimiento.add(jugador);
-        numZombies = 1;
+        numZombies = 5;
         startWave();
 
     }
@@ -58,7 +58,7 @@ public class Estado {
         }
     }
 
-    public ArrayList<ObjetosMovimiento> getMovingObject(){
+    public ArrayList<ObjetosMovimiento> getObjetoMovimiento(){
         return objetosMovimiento;
     }
 

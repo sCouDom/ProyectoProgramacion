@@ -28,7 +28,7 @@ public abstract class ObjetosMovimiento extends Objetos {
     }
 
     protected boolean colisionCon(){
-        ArrayList<ObjetosMovimiento> objetosMovimientos = estado.getMovingObject();
+        ArrayList<ObjetosMovimiento> objetosMovimientos = estado.getObjetoMovimiento();
         boolean flag = false;
 
         for (int i = 0; i < objetosMovimientos.size(); i++) {
@@ -55,7 +55,7 @@ public abstract class ObjetosMovimiento extends Objetos {
     }
 
     protected void destruir(){
-        estado.getMovingObject().remove(this);
+        estado.getObjetoMovimiento().remove(this);
     }
 
     protected Vector getCentro(){
