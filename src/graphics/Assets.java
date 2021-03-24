@@ -4,12 +4,12 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
-    public static BufferedImage player;
-    public static BufferedImage asteroide;
+    public static BufferedImage jugador;
+    public static BufferedImage zombie;
 
     public static void init(){
-        player = Loader.imageLoader("/ships/playerShip3_red.png");
-        asteroide = Loader.imageLoader("/ships/meteorBrown_big1.png");
+        jugador = CargadorAssets.cargadorImagen("/imagenes/Audi.png");
+        zombie = CargadorAssets.cargadorImagen("/imagenes/skeleton-attack_8.png");
 
     }
 }

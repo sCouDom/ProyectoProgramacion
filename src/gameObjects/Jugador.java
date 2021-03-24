@@ -1,9 +1,9 @@
 package gameObjects;
 
 import graphics.Assets;
-import input.Keyboard;
-import math.Vector2D;
-import states.GameState;
+import entrada.Teclado;
+import matematica.Vector;
+import estados.Estado;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -15,40 +15,40 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player extends MovingObject {
+public class Jugador extends ObjetosMovimiento {
 
-    private Vector2D heading;
-    private Vector2D acceleration;
-    private final double ACC = 0.2;
+    private Vector direccion;
+    private Vector aceleracion;
+    private final double ACEL = 0.2;
     private int points = 0;
 
 
-    public Player(Vector2D position, Vector2D velocitiy, double maxVel, BufferedImage texture, GameState gameState) {
-        super(position, velocitiy, maxVel, texture, gameState);
-        heading = new Vector2D(0, 1);
-        acceleration = new Vector2D();
+    public Jugador(Vector posicion, Vector velocidad, double velocidadMaxima, BufferedImage textura, Estado estado) {
+        super(posicion, velocidad, velocidadMaxima, textura, estado);
+        direccion = new Vector(0, 1);
+        aceleracion = new Vector();
     }
 
     @Override
     public void update() {
 
-        if(Keyboard.RIGHT)
-            angle += Math.PI/20;
-        if(Keyboard.LEFT)
-            angle -= Math.PI/20;
-        heading = heading.setDirection(angle - Math.PI/2);
+        if(Teclado.RIGHT)
+            angulo += Math.PI/20;
+        if(Teclado.LEFT)
+            angulo -= Math.PI/20;
+        direccion = direccion.setDireccion(angulo - Math.PI/2);
 
-        position = position.add(velocity);
+        posicion = posicion.sumar(velocidad);
 
-        if(Keyboard.UP){
-            acceleration = heading.scale(ACC);
+        if(Teclado.UP){
+            aceleracion = direccion.porEscalar(ACEL);
         } else {
 
         }
-        velocity = velocity.add(acceleration);
-        velocity.limit(maxVel);
+        velocidad = velocidad.sumar(aceleracion);
+        velocidad.limitar(velocidadMaxima);
         points +=1;
-        if (collidesWith()){
+        if (colisionCon()){
             ArrayList<Integer> l = new ArrayList<Integer>();
             try{
                 File f = new File("src/registro.txt");
@@ -83,14 +83,14 @@ public class Player extends MovingObject {
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
-        at = AffineTransform.getTranslateInstance(position.getX(),position.getY());
-        at.rotate(angle, width/2, height/2);
-        g2d.drawImage(Assets.player, at, null);
+        at = AffineTransform.getTranslateInstance(posicion.getX(), posicion.getY());
+        at.rotate(angulo, ancho /2, altura /2);
+        g2d.drawImage(Assets.jugador, at, null);
         g.setColor(Color.white);
         g.drawString(String.valueOf(points), 25, 25);
     }
 
-    public Vector2D getCenter(){
-        return new Vector2D(position.getX() + width/2, position.getY() + height/2);
+    public Vector getCentro(){
+        return new Vector(posicion.getX() + ancho /2, posicion.getY() + altura /2);
     }
 }

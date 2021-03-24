@@ -4,10 +4,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Loader {
-    public static BufferedImage imageLoader(String path){
+public class CargadorAssets {
+    public static BufferedImage cargadorImagen(String path){
         try {
-            return ImageIO.read(Loader.class.getResource(path));
+            return ImageIO.read(CargadorAssets.class.getResource(path));
         } catch (IOException e) {
             e.printStackTrace();
         }

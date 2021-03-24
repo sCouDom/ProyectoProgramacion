@@ -1,31 +1,31 @@
 package gameObjects;
 
 public class Cronometro {
-    private long delta, lastTime;
-    private long time;
-    private boolean running;
+    private long delta, ultimoTiempo;
+    private long tiempo;
+    private boolean funcionando;
 
     public Cronometro(){
         delta=0;
-        lastTime=0;
-        running=false;
+        ultimoTiempo =0;
+        funcionando =false;
     }
 
     public void run(long time){
-        running=true;
-        this.time=time;
+        funcionando =true;
+        this.tiempo =time;
     }
 
     public void update(){
-        if(running)
-            delta+=System.currentTimeMillis()-lastTime;
-        if(delta>=time){
-            running=false;
+        if(funcionando)
+            delta+=System.currentTimeMillis()- ultimoTiempo;
+        if(delta>= tiempo){
+            funcionando =false;
         }
-        lastTime = System.currentTimeMillis();
+        ultimoTiempo = System.currentTimeMillis();
     }
 
-    public boolean isRunning(){
-        return running;
+    public boolean isFuncionando(){
+        return funcionando;
     }
 }

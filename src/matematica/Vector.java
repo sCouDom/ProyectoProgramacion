@@ -1,34 +1,34 @@
-package math;
+package matematica;
 
-public class Vector2D {
+public class Vector {
     private double x,y;
 
-    public Vector2D(double x, double y){
+    public Vector(double x, double y){
         this.x=x;
         this.y=y;
     }
 
-    public Vector2D(){
+    public Vector(){
         x=0;
         y=0;
     }
 
-    public Vector2D add(Vector2D v){
-        return new Vector2D(x + v.getX(), y + v.getY());
+    public Vector sumar(Vector v){
+        return new Vector(x + v.getX(), y + v.getY());
     }
 
-    public Vector2D substract(Vector2D v){
-        return new Vector2D(x - v.getX(), y - v.getY());
-    }
-
-
-    public Vector2D scale(double value){
-        return new Vector2D(x*value,y*value);
+    public Vector restar(Vector v){
+        return new Vector(x - v.getX(), y - v.getY());
     }
 
 
+    public Vector porEscalar(double value){
+        return new Vector(x*value,y*value);
+    }
 
-    public void limit(double value){
+
+
+    public void limitar(double value){
         if(x>value){
             x=value;
         }
@@ -43,12 +43,12 @@ public class Vector2D {
         }
     }
 
-    public double getMagnitude(){
+    public double getMagnitud(){
         return Math.sqrt(x*x+y*y);
     }
 
-    public Vector2D setDirection(double angle){
-        return new Vector2D(Math.cos(angle)*getMagnitude(), Math.sin(angle)*getMagnitude());
+    public Vector setDireccion(double angle){
+        return new Vector(Math.cos(angle)* getMagnitud(), Math.sin(angle)* getMagnitud());
     }
 
     public double getX() {

@@ -1,14 +1,14 @@
-package input;
+package entrada;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Keyboard implements KeyListener {
+public class Teclado implements KeyListener {
 
     private boolean[] keys = new boolean[256];
     public static boolean UP, LEFT, RIGHT;
 
-    public Keyboard(){
+    public Teclado(){
         UP = false;
         LEFT = false;
         RIGHT = false;
