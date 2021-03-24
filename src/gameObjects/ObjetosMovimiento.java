@@ -26,34 +26,27 @@ public abstract class ObjetosMovimiento extends Objetos {
         altura = textura.getHeight();
         angulo = 0;
     }
-
     protected boolean colisionCon(){
         ArrayList<ObjetosMovimiento> objetosMovimientos = estado.getObjetoMovimiento();
         boolean flag = false;
-
         for (int i = 0; i < objetosMovimientos.size(); i++) {
             ObjetosMovimiento m = objetosMovimientos.get(i);
             if(m.equals(this))
                 continue;
-
             double distance = m.getCentro().restar(getCentro()).getMagnitud();
-            if(distance<m.ancho /2+ ancho /2 && objetosMovimientos.contains(this)){
+            if(distance<m.ancho /2 + ancho /2 && objetosMovimientos.contains(this)){
                 colisionObjetos(m, this);
                 flag = true;
             }
-
         }
         return flag;
     }
-
     private void colisionObjetos(ObjetosMovimiento a, ObjetosMovimiento b){
         if( !(a instanceof Zombie) || !(b instanceof Zombie)){
             a.destruir();
             b.destruir();
         }
-
     }
-
     protected void destruir(){
         estado.getObjetoMovimiento().remove(this);
     }

@@ -31,8 +31,8 @@ public class VentanaPrincipal extends JFrame implements Runnable{
         setLocationRelativeTo(null);
 
 
-        lienzo =new Canvas();
-        teclado =new Teclado();
+        lienzo = new Canvas();
+        teclado = new Teclado();
         lienzo.setPreferredSize(new Dimension(ANCHO, ALTURA));
         lienzo.setMinimumSize(new Dimension(ANCHO, ALTURA));
         lienzo.setMaximumSize(new Dimension(ANCHO, ALTURA));
@@ -59,14 +59,12 @@ public class VentanaPrincipal extends JFrame implements Runnable{
             return;
         }
         g=bs.getDrawGraphics();
-
+        //----------------------
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, ANCHO, ALTURA);
-
         estado.draw(g);
-
         g.drawString(""+ MEDIAFPS, 10, 10);
-
+        //---------------------
         g.dispose();
         bs.show();
     }

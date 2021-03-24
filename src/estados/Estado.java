@@ -15,18 +15,16 @@ public class Estado {
 
     private Jugador jugador;
     private ArrayList<ObjetosMovimiento> objetosMovimiento = new ArrayList<ObjetosMovimiento>();
-
     private int numZombies;
 
     public Estado(){
         jugador = new Jugador(new Vector(100,500), new Vector(), 4, Assets.jugador, this);
         objetosMovimiento.add(jugador);
         numZombies = 5;
-        startWave();
-
+        empezarAtaque();
     }
 
-    public void startWave(){
+    public void empezarAtaque(){
         double x, y;
         for (int i = 0; i < numZombies; i++) {
             x = i % 2 == 0 ? Math.random()*1000+200 : 0;
@@ -43,7 +41,6 @@ public class Estado {
                     Zom.ZOMBIE
                     ));
         }
-        numZombies++;
     }
 
     public void update(){

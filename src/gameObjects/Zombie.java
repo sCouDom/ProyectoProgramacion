@@ -20,8 +20,6 @@ public class Zombie extends ObjetosMovimiento {
     @Override
     public void update() {
         posicion = posicion.sumar(velocidad);
-        angulo += 0.01;
-
         if(posicion.getX()>800)
             posicion.setX(0);
         if(posicion.getY()>500)
@@ -39,7 +37,7 @@ public class Zombie extends ObjetosMovimiento {
         g2d.drawImage(Assets.zombie, at, null);
     }
 
-    public Zom getAst() {
+    public Zom getZom() {
         return zom;
     }
 }
