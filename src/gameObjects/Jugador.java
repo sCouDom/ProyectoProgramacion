@@ -14,7 +14,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Clase encargada del funcionamiento y apariencia del jugador .
+ */
 public class Jugador extends ObjetosMovimiento {
 
     private Vector direccion;
@@ -22,13 +24,23 @@ public class Jugador extends ObjetosMovimiento {
     private final double ACEL = 0.2;
     private int points = 0;
 
-
+    /**
+     * Constructor de la clase jugador.
+     * @param posicion
+     * @param velocidad
+     * @param velocidadMaxima
+     * @param textura
+     * @param estado
+     */
     public Jugador(Vector posicion, Vector velocidad, double velocidadMaxima, BufferedImage textura, Estado estado) {
         super(posicion, velocidad, velocidadMaxima, textura, estado);
         direccion = new Vector(0, 1);
         aceleracion = new Vector();
     }
-
+    /**
+     * Método que actualiza la posición del jugador,
+     * además de guardar los datos de la partida en un archivo externo.
+     */
     @Override
     public void update() {
 
@@ -62,8 +74,6 @@ public class Jugador extends ObjetosMovimiento {
                             l.add(Integer.parseInt(temp));
                 }
                 sf.close();
-                System.out.println(l.size());
-
                 FileWriter fw = new FileWriter("src/registro.txt");
                 l.add(points);
                 for (int i = 0; i < l.size(); i++) {
@@ -79,7 +89,10 @@ public class Jugador extends ObjetosMovimiento {
 
         }
     }
-
+    /**
+     * Método que dibuja al jugador en el lienzo.
+     * @param g
+     */
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
@@ -89,7 +102,10 @@ public class Jugador extends ObjetosMovimiento {
         g.setColor(Color.white);
         g.drawString(String.valueOf(points), 25, 25);
     }
-
+    /**
+     * Método utilizado para conseguir el centro del sprite del jugador.
+     * @return
+     */
     public Vector getCentro(){
         return new Vector(posicion.getX() + ancho /2, posicion.getY() + altura /2);
     }
